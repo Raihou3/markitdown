@@ -4,8 +4,8 @@
 import argparse
 import sys
 from textwrap import dedent
-from .__about__ import __version__
-from ._markitdown import MarkItDown, DocumentConverterResult
+from __about__ import __version__
+from _markitdown import MarkItDown, DocumentConverterResult
 
 
 def main():
@@ -31,13 +31,13 @@ def main():
                 OR
 
                 markitdown < example.pdf
-                
+
                 OR to save to a file use
-    
+
                 markitdown example.pdf -o example.md
-                
+
                 OR
-                
+
                 markitdown example.pdf > example.md
             """
         ).strip(),
@@ -56,6 +56,14 @@ def main():
         "-o",
         "--output",
         help="Output file name. If not provided, output is written to stdout.",
+    )
+
+    parser.add_argument(
+        "-b",
+        "--base64",
+        help="在输出MD文件里面图片转为base64",
+        type=bool,
+        default=True
     )
     args = parser.parse_args()
 
